@@ -1,5 +1,7 @@
 # Stylelint configuration for Qumu
 
+This configuration needs Stylelint v14+. If you need to use Stylelint 13 and below, please use https://github.com/qumu/code-conventions.
+
 ## Usage
 
 To use our configuration, you first need to install [Sylelint](https://github.com/stylelint/stylelint) and the Qumu rules.
@@ -12,7 +14,7 @@ Once installed, create a `.stylelintrc` file and add the following code:
 
 ```json
 {
-  "extends": "./node_modules/@qumu/stylelint-config-qumu/index.js"
+  "extends": "@qumu/stylelint-config-qumu"
 }
 ```
 
@@ -24,7 +26,7 @@ For example, to change the `indentation` to tabs and turn off the `number-leadin
 
 ```json
 {
-  "extends": "./node_modules/@qumu/stylelint-config-qumu/index.js",
+  "extends": "@qumu/stylelint-config-qumu",
   "rules": {
     "indentation": "tab",
     "number-leading-zero": null
