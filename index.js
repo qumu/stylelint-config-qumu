@@ -1,8 +1,6 @@
 module.exports = {
   extends:
     [
-      // 'stylelint-config-html/html',
-      // 'stylelint-config-html/astro',
       'stylelint-config-standard-scss',
       'stylelint-config-standard-vue/scss'
     ]
@@ -17,6 +15,5 @@ module.exports = {
           .map(require.resolve)),
   plugins: [
     'stylelint-order',
-  ],
-  overrides: []
+  ]
 };
