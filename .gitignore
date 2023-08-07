@@ -1,0 +1,5 @@
+.idea/
+stylelint-config-qumu.iml
+
+node_modules/
+coverage/

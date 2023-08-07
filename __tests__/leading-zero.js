@@ -1,0 +1,21 @@
+const stylelint = require('stylelint');
+const config = require('..');
+
+const invalidCode = `
+.leadingzero {
+  margin: 0.5em;
+}
+`;
+
+describe('Leading zero', () => {
+  it('should return warnings', () => stylelint
+    .lint({
+      code: invalidCode,
+      config,
+    })
+    .then((output) => output.results[0].warnings)
+    .then((warnings) => {
+      expect(warnings).toHaveLength(1);
+      expect(warnings[0].text).toBe('Unexpected leading zero (number-leading-zero)');
+    }));
+});

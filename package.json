@@ -1,0 +1,24 @@
+{
+  "name": "@qumu/stylelint-config-qumu",
+  "version": "0.0.1",
+  "description": "Stylelint configuration for Qumu",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "stylelint": "15.10.2",
+    "stylelint-config-standard-scss": "10.0.0",
+    "stylelint-config-standard-vue": "1.0.0",
+    "stylelint-order": "6.0.3"
+  },
+  "devDependencies": {
+    "jest": "29.6.2"
+  },
+  "peerDependencies": {
+    "stylelint": "^15.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
