@@ -31,6 +31,10 @@ module.exports = {
     // https://github.com/kristerkari/stylelint-scss/tree/master/src/rules/dollar-variable-colon-space-before
     'scss/dollar-variable-colon-space-before': 'never',
 
+    // Allow empty and non-empty lines before @
+    // https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/dollar-variable-empty-line-before/README.md
+    'scss/dollar-variable-empty-line-before': null,
+
     // Specify a pattern for Sass-like variables.
     // https://github.com/kristerkari/stylelint-scss/tree/master/src/rules/dollar-variable-pattern
     'scss/dollar-variable-pattern': '^[_]?[a-z]+([a-z0-9-]+[a-z0-9]+)?$',

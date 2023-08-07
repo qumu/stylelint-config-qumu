@@ -44,17 +44,9 @@ module.exports = {
     // https://stylelint.io/user-guide/rules/no-duplicate-at-import-rules/
     'no-duplicate-at-import-rules': true,
 
-    // Disallow extra semicolons.
-    // https://stylelint.io/user-guide/rules/no-extra-semicolons/
-    'no-extra-semicolons': true,
-
     // Disallow unknown properties.
     // https://stylelint.io/user-guide/rules/property-no-unknown/
     'property-no-unknown': true,
-
-    // Specify lowercase or uppercase for pseudo-class selectors.
-    // https://stylelint.io/user-guide/rules/selector-pseudo-class-case/
-    'selector-pseudo-class-case': 'lower',
 
     // Disallow unknown pseudo-element selectors.
     // https://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown/

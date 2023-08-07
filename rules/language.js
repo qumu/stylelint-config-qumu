@@ -1,5 +1,9 @@
 module.exports = {
   rules: {
+    // Allow empty and non-empty lines before @
+    // https://stylelint.io/user-guide/rules/at-rule-empty-line-before/
+    'at-rule-empty-line-before': null,
+
     // Disallow vendor prefixes for at-rules.
     // https://stylelint.io/user-guide/rules/at-rule-no-vendor-prefix/
     'at-rule-no-vendor-prefix': null,
@@ -34,6 +38,10 @@ module.exports = {
     // https://stylelint.io/user-guide/rules/media-feature-range-notation/
     'media-feature-range-notation': null,
 
+    // Disallow CSS specificity check
+    // https://stylelint.io/user-guide/rules/no-descending-specificity/
+    'no-descending-specificity': null,
+
     // Disallow vendor prefixes for properties.
     // https://stylelint.io/user-guide/rules/property-no-vendor-prefix/
     // TODO re-enable this rule once Qumustrap is free of vendor prefixes
@@ -52,10 +60,6 @@ module.exports = {
     // Limit the number of compound selectors in a selector.
     // https://stylelint.io/user-guide/rules/selector-max-compound-selectors/
     'selector-max-compound-selectors': 3,
-
-    // Limit the number of adjacent empty lines within selectors.
-    // https://stylelint.io/user-guide/rules/selector-max-empty-lines/
-    'selector-max-empty-lines': 0,
 
     // Limit the number of ID selectors in a selector.
     // https://stylelint.io/user-guide/rules/selector-max-id/
