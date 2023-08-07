@@ -62,7 +62,14 @@ module.exports = {
 
     // Disallow unknown type selectors.
     // https://stylelint.io/user-guide/rules/selector-type-no-unknown/
-    'selector-type-no-unknown': true,
+    'selector-type-no-unknown': [
+      true,
+      {
+        'ignoreTypes': [
+          '/^qi-/'
+        ]
+      }
+    ],
 
     // Disallow (unescaped) newlines in strings.
     // https://stylelint.io/user-guide/rules/string-no-newline/
