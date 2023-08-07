@@ -20,6 +20,9 @@ module.exports = {
     // https://github.com/kristerkari/stylelint-scss/tree/master/src/rules/at-rule-no-unknown
     'scss/at-rule-no-unknown': true,
 
+    // Allow empty comments
+    'scss/comment-no-empty': null,
+
     // Require or disallow whitespace after the colon in $-variable declarations.
     // https://github.com/kristerkari/stylelint-scss/tree/master/src/rules/dollar-variable-colon-space-after
     'scss/dollar-variable-colon-space-after': 'at-least-one-space',
@@ -42,6 +45,6 @@ module.exports = {
 
     // Enforces parentheses even for mixin with no arguements
     // https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-argumentless-call-parentheses/README.md
-    'scss/at-mixin-argumentless-call-parentheses': 'always'
+    'scss/at-mixin-argumentless-call-parentheses': 'always',
   },
 };
