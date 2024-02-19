@@ -1,4 +1,4 @@
-# Stylelint configuration for Qumua
+# Stylelint configuration for Qumu
 
 This configuration needs Stylelint v14+. If you need to use Stylelint 13 and below, please use https://github.com/qumu/code-conventions.
 
