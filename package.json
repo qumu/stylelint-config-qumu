@@ -1,8 +1,18 @@
 {
-  "name": "@qumu/stylelint-config-qumu",
+  "name": "@enghouse-qumu/stylelint-config-qumu",
   "version": "1.0.1",
   "description": "Stylelint configuration for Qumu",
   "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qumu/stylelint-config-qumu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qumu/stylelint-config-qumu/issues"
+  },
   "scripts": {
     "test": "jest"
   },
@@ -17,8 +27,5 @@
   },
   "peerDependencies": {
     "stylelint": "^15.0.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }
