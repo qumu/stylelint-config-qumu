@@ -4,17 +4,17 @@ This configuration needs Stylelint v14+. If you need to use Stylelint 13 and bel
 
 ## Usage
 
-To use our configuration, you first need to install [Sylelint](https://github.com/stylelint/stylelint) and the Qumu rules.
+To use our configuration, you first need to install [Sylelint](https://github.com/stylelint/stylelint) and the Enghouse Qumu rules.
 
 ```bash
-npm install --save-dev stylelint @qumu/stylelint-config-qumu
+npm install --save-dev stylelint @enghouse-qumu/stylelint-config-qumu
 ```
 
 Once installed, create a `.stylelintrc` file and add the following code:
 
 ```json
 {
-  "extends": "@qumu/stylelint-config-qumu"
+  "extends": "@enghouse-qumu/stylelint-config-qumu"
 }
 ```
 
@@ -26,7 +26,7 @@ For example, to change the `indentation` to tabs and turn off the `number-leadin
 
 ```json
 {
-  "extends": "@qumu/stylelint-config-qumu",
+  "extends": "@enghouse-qumu/stylelint-config-qumu",
   "rules": {
     "indentation": "tab",
     "number-leading-zero": null
