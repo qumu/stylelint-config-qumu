@@ -1,0 +1,28 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:18-alpine'
+            reuseNode true
+        }
+    }
+
+    triggers {
+        bitBucketTrigger(triggers: [
+                [$class: 'BitBucketPPRPullRequestTriggerFilter', actionFilter: [$class: 'BitBucketPPRPullRequestCreatedActionFilter']],
+                [$class: 'BitBucketPPRPullRequestTriggerFilter', actionFilter: [$class: 'BitBucketPPRPullRequestUpdatedActionFilter']],
+                [$class: 'BitBucketPPRPullRequestTriggerFilter', actionFilter: [$class: 'BitBucketPPRPullRequestMergedActionFilter']]
+        ])
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'JENKINS_GH_API_TOKEN', usernameVariable: 'USERNAME', passwordVariable: 'NPM_TOKEN')]) {
+                    sh 'echo //npm.pkg.github.com/:_authToken=$NPM_TOKEN >> .npmrc'
+                }
+                sh 'npm ci'
+                sh 'npm run test'
+            }
+        }
+    }
+}
