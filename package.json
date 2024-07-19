@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qumu/stylelint-config-qumu.git"
+    "url": "git+https://bitbucket.org/enghouseglobal/ip-qumu_stylelint-config-qumu"
   },
   "bugs": {
-    "url": "https://github.com/qumu/stylelint-config-qumu/issues"
+    "url": "https://bitbucket.org/enghouseglobal/ip-qumu_stylelint-config-qumu/issues"
   },
   "scripts": {
     "test": "jest"
