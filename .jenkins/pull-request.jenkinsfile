@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'node:18-alpine'
-            args '-u root'
             reuseNode true
         }
     }
@@ -18,11 +17,27 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'JENKINS_GH_API_TOKEN', usernameVariable: 'USERNAME', passwordVariable: 'NPM_TOKEN')]) {
-                    sh 'echo //npm.pkg.github.com/:_authToken=$NPM_TOKEN >> .npmrc'
+                withCredentials([file(credentialsId: 'JENKINS_GCP_SA', variable: 'SA_KEY')]) {
+                    sh '''
+                    export GOOGLE_APPLICATION_CREDENTIALS="${SA_KEY}"
+                    npx google-artifactregistry-auth --repo-config=./.npmrc --credential-config=./.npmrc
+                    npm ci
+                    npm test
+                  '''
                 }
-                sh 'npm ci'
-                sh 'npm run test'
+
+            }
+        }
+
+        stage('Run code analysis') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'JENKINS_GCP_SA', variable: 'SA_KEY')]) {
+                        withSonarQubeEnv('sonarcloud') {
+                            sh 'npx sonarqube-scanner'
+                        }
+                    }
+                }
             }
         }
     }
