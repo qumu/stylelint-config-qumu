@@ -17,15 +17,8 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                withCredentials([file(credentialsId: 'JENKINS_GCP_SA', variable: 'SA_KEY')]) {
-                    sh '''
-                    export GOOGLE_APPLICATION_CREDENTIALS="${SA_KEY}"
-                    npx google-artifactregistry-auth --repo-config=./.npmrc --credential-config=./.npmrc
-                    npm ci
-                    npm test
-                  '''
-                }
-
+                sh 'npm ci'
+                sh 'npm test'
             }
         }
 
