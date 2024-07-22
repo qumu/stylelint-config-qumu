@@ -1,0 +1,38 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:18-alpine'
+            args '-u root'
+            reuseNode true
+        }
+    }
+
+    triggers {
+        bitBucketTrigger(triggers: [
+                [$class: 'BitBucketPPRPullRequestTriggerFilter', actionFilter: [$class: 'BitBucketPPRPullRequestCreatedActionFilter']],
+                [$class: 'BitBucketPPRPullRequestTriggerFilter', actionFilter: [$class: 'BitBucketPPRPullRequestUpdatedActionFilter']],
+                [$class: 'BitBucketPPRPullRequestTriggerFilter', actionFilter: [$class: 'BitBucketPPRPullRequestMergedActionFilter']]
+        ])
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                sh 'npm ci'
+                sh 'npm test'
+            }
+        }
+
+        stage('Run code analysis') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'JENKINS_GCP_SA', variable: 'SA_KEY')]) {
+                        withSonarQubeEnv('sonarcloud') {
+                            sh 'npx sonarqube-scanner'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
