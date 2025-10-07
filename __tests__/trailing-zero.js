@@ -3,19 +3,20 @@ import stylelint from 'stylelint';
 import config from '../index.js';
 
 const invalidCode = `
-$spaceaftervariablecolon:#fff;
+.trailingzero {
+  margin: .500em;
+}
 `;
 
-describe('Space after variable colon scss', () => {
+describe('Trailing zero', () => {
   it('should return warnings', () => stylelint
     .lint({
       code: invalidCode,
       config,
-      syntax: 'scss',
     })
     .then((output) => output.results[0].warnings)
     .then((warnings) => {
       expect(warnings).toHaveLength(1);
-      expect(warnings[0].text).toBe('Expected at least one space after ":" (scss/dollar-variable-colon-space-after)');
+      expect(warnings[0].text).toBe('Unexpected trailing zero(s) (@stylistic/number-no-trailing-zeros)');
     }));
 });

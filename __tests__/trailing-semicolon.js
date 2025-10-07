@@ -3,16 +3,13 @@ import stylelint from 'stylelint';
 import config from '../index.js';
 
 const invalidCode = `
-p:before {
-  content: '>';
-}
-
-p::hover {
-  color: #f00;
+.trailingsemicolon {
+  background-color: #fff ;
+  color: #fff
 }
 `;
 
-describe('Pseudo element', () => {
+describe('Trailing semicolon', () => {
   it('should return warnings', () => stylelint
     .lint({
       code: invalidCode,
@@ -21,7 +18,7 @@ describe('Pseudo element', () => {
     .then((output) => output.results[0].warnings)
     .then((warnings) => {
       expect(warnings).toHaveLength(2);
-      expect(warnings[0].text).toBe('Expected double colon pseudo-element notation (selector-pseudo-element-colon-notation)');
-      expect(warnings[1].text).toBe('Unexpected unknown pseudo-element selector "::hover" (selector-pseudo-element-no-unknown)');
+      expect(warnings[0].text).toBe('Unexpected whitespace before ";" (@stylistic/declaration-block-semicolon-space-before)');
+      expect(warnings[1].text).toBe('Expected a trailing semicolon (@stylistic/declaration-block-trailing-semicolon)');
     }));
 });

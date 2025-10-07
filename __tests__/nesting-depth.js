@@ -1,5 +1,6 @@
-const stylelint = require('stylelint');
-const config = require('..');
+import { describe, it, expect } from 'vitest';
+import stylelint from 'stylelint';
+import config from '../index.js';
 
 const invalidCode = `
 .one {
@@ -46,8 +47,8 @@ describe('Nesting depth scss', () => {
     .then((warnings) => {
       expect(warnings).toHaveLength(3);
       expect(warnings[0].text).toBe('Expected nesting depth to be no more than 3 (max-nesting-depth)');
-      expect(warnings[1].text).toBe('Expected ".one .two .three .four" to have no more than 3 compound selectors (selector-max-compound-selectors)');
-      expect(warnings[2].text).toBe('Expected ".one .two .three .four .five" to have no more than 3 compound selectors (selector-max-compound-selectors)');
+      expect(warnings[1].text).toBe('Expected ".four" to have no more than 3 compound selectors (selector-max-compound-selectors)');
+      expect(warnings[2].text).toBe('Expected ".five" to have no more than 3 compound selectors (selector-max-compound-selectors)');
     }));
 
   it('should return no errors', () => stylelint

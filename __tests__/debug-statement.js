@@ -3,10 +3,14 @@ import stylelint from 'stylelint';
 import config from '../index.js';
 
 const invalidCode = `
-$spaceaftervariablecolon:#fff;
+$color-blue: #1c94c6;
+
+.debug {
+  @debug $color-blue;
+}
 `;
 
-describe('Space after variable colon scss', () => {
+describe('Debug statement scss', () => {
   it('should return warnings', () => stylelint
     .lint({
       code: invalidCode,
@@ -16,6 +20,6 @@ describe('Space after variable colon scss', () => {
     .then((output) => output.results[0].warnings)
     .then((warnings) => {
       expect(warnings).toHaveLength(1);
-      expect(warnings[0].text).toBe('Expected at least one space after ":" (scss/dollar-variable-colon-space-after)');
+      expect(warnings[0].text).toBe('Unexpected at-rule "@debug" (at-rule-disallowed-list)');
     }));
 });

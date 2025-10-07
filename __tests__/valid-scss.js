@@ -1,40 +1,21 @@
-const stylelint = require('stylelint');
-const config = require('..');
+import { describe, it, expect } from 'vitest';
+import stylelint from 'stylelint';
+import config from '../index.js';
 
 const validCode = `
-// Import Path test
-@import 'foo/bar';
-@import 'bar';
-
-// EmptyLineBetweenBlocks test
-// scss-lint:disable NestingDepth
-p {
-  margin: 0;
-
-  em {
-    color: #f00;
-  }
-}
-
-a {
-  color: #f00;
-}
-
 // Bang Format test
 .bangformat {
   color: #000 !important;
 }
 
 // BEM Depth test
-
+// scss-lint:disable SelectorFormat
+// stylelint:disable selector-class-pattern
 .block__element {
-  // scss-lint:disable SelectorFormat
-  // stylelint:disable selector-class-pattern
   color: #f00;
-
-  // stylelint:enable selector-class-pattern
-  // scss-lint:enable SelectorFormat
 }
+// stylelint:enable selector-class-pattern
+// scss-lint:enable SelectorFormat
 
 // Border Zero test
 .borderzero {
@@ -60,7 +41,6 @@ a {
     color: #f00;
   }
 }
-
 // scss-lint:enable NestingDepth
 
 // ElsePlacement test
@@ -75,6 +55,19 @@ $width: auto;
   }
 }
 
+// EmptyLineBetweenBlocks test
+// scss-lint:disable NestingDepth
+p {
+  margin: 0;
+
+  em {
+    color: #f00;
+  }
+}
+
+a {
+  color: #f00;
+}
 // scss-lint:enable NestingDepth
 
 // Hexlength test
@@ -87,13 +80,14 @@ $width: auto;
   color: #f00;
 }
 
-
+// Import Path test
+@import 'foo/bar';
+@import 'bar';
 
 // Indentation test
 .indentation {
   color: #f00;
 }
-
 // No test for allow_non_nested_indentation
 
 // Leading Zero test
@@ -119,7 +113,7 @@ $my-var: 10px;
 }
 
 // Private Naming Convention test
-// Enforces that functions, mixins, and variables that follow the private naming convention
+// Enforces that functions, mixins, and variables that follow the private naming convention 
 // (default to underscore-prefixed, e.g. $_foo) are defined and used within the same file.
 
 $_foo: #f00;
@@ -246,8 +240,7 @@ a:hover {
 // SpaceAfterComma test
 .spaceaftercomma {
   @include box-shadow(0 2px 2px rgba(0, 0, 0, .2));
-
-  color: rgb(0 0 0 / 10%);
+  color: rgba(0, 0, 0, .1);
 }
 
 // SpaceAfterPropertyColon test
@@ -269,8 +262,8 @@ $spaceaftervariblename: #f00;
 
 // SpaceAroundOperator test
 .spacearoundoperator {
-  margin: 5px + 5px;
-  padding: 5px + 5px;
+  margin: (5px + 5px);
+  padding: (5px + 5px);
 }
 
 // SpaceBeforeBrace test
@@ -281,8 +274,7 @@ $spaceaftervariblename: #f00;
 // SpaceBetweenParens test
 .spacebetweenparens {
   @include box-shadow(0 2px 2px rgba(0, 0, 0, .2));
-
-  color: rgb(0 0 0 / 10%);
+  color: rgba(0, 0, 0, .1);
 }
 
 // StringQuotes test
@@ -313,7 +305,6 @@ $spaceaftervariblename: #f00;
     color: #f00;
   }
 }
-
 // scss-lint:enable NestingDepth
 
 // UrlQuotes test
@@ -343,6 +334,6 @@ describe('Valid scss', () => {
     })
     .then((output) => output.results[0].warnings)
     .then((warnings) => {
-      expect(warnings).toHaveLength(0);
+      expect(warnings).toEqual([]);
     }));
 });

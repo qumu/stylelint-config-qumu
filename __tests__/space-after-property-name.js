@@ -3,19 +3,20 @@ import stylelint from 'stylelint';
 import config from '../index.js';
 
 const invalidCode = `
-$spaceaftervariablecolon:#fff;
+.spaceafterpropertyname {
+  margin : 0;
+}
 `;
 
-describe('Space after variable colon scss', () => {
+describe('Space after property name', () => {
   it('should return warnings', () => stylelint
     .lint({
       code: invalidCode,
       config,
-      syntax: 'scss',
     })
     .then((output) => output.results[0].warnings)
     .then((warnings) => {
       expect(warnings).toHaveLength(1);
-      expect(warnings[0].text).toBe('Expected at least one space after ":" (scss/dollar-variable-colon-space-after)');
+      expect(warnings[0].text).toBe('Unexpected whitespace before ":" (@stylistic/declaration-colon-space-before)');
     }));
 });

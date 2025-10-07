@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   rules: {
     // Specify the order of content within declaration blocks.
     // https://github.com/hudochenkov/stylelint-order/blob/master/rules/order/README.md

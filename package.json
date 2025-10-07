@@ -4,7 +4,7 @@
   "description": "Stylelint configuration for Qumu",
   "main": "index.js",
   "engines": {
-    "node": ">=18"
+    "node": ">=24"
   },
   "repository": {
     "type": "git",
@@ -13,19 +13,29 @@
   "bugs": {
     "url": "https://bitbucket.org/enghouseglobal/ip-qumu_stylelint-config-qumu/issues"
   },
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "vitest run --coverage",
+    "test:watch": "vitest run --watch"
   },
   "dependencies": {
-    "stylelint": "15.10.2",
-    "stylelint-config-standard-scss": "10.0.0",
-    "stylelint-config-standard-vue": "1.0.0",
-    "stylelint-order": "6.0.3"
+    "@stylistic/stylelint-plugin": "4.0.0",
+    "postcss-scss": "^4.0.9",
+    "stylelint": "16.24.0",
+    "stylelint-config-standard": "39.0.0",
+    "stylelint-order": "7.0.0",
+    "stylelint-scss": "6.12.1"
   },
   "devDependencies": {
-    "jest": "29.6.2"
+    "@vitest/coverage-v8": "^3.2.4",
+    "vitest": "^3.2.4"
   },
   "peerDependencies": {
-    "stylelint": "^15.0.0"
+    "@stylistic/stylelint-plugin": "4.0.0",
+    "postcss-scss": "^4.0.9",
+    "stylelint": "16.24.0",
+    "stylelint-config-standard": "39.0.0",
+    "stylelint-order": "7.0.0",
+    "stylelint-scss": "6.12.1"
   }
 }

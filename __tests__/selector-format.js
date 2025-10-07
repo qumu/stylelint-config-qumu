@@ -1,5 +1,6 @@
-const stylelint = require('stylelint');
-const config = require('..');
+import { describe, it, expect } from 'vitest';
+import stylelint from 'stylelint';
+import config from '../index.js';
 
 const invalidCode = `
 .Foo {
@@ -10,7 +11,7 @@ const invalidCode = `
   color: #f00;
 }
 
-.foo__Bar2 {
+.foo__Bar {
   color: #f00;
 }
 

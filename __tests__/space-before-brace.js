@@ -3,16 +3,16 @@ import stylelint from 'stylelint';
 import config from '../index.js';
 
 const invalidCode = `
-p:before {
-  content: '>';
+.spacebeforebrace1{
+  color: #f00;
 }
 
-p::hover {
+.spacebeforebrace2  {
   color: #f00;
 }
 `;
 
-describe('Pseudo element', () => {
+describe('Space before brace', () => {
   it('should return warnings', () => stylelint
     .lint({
       code: invalidCode,
@@ -21,7 +21,7 @@ describe('Pseudo element', () => {
     .then((output) => output.results[0].warnings)
     .then((warnings) => {
       expect(warnings).toHaveLength(2);
-      expect(warnings[0].text).toBe('Expected double colon pseudo-element notation (selector-pseudo-element-colon-notation)');
-      expect(warnings[1].text).toBe('Unexpected unknown pseudo-element selector "::hover" (selector-pseudo-element-no-unknown)');
+      expect(warnings[0].text).toBe('Expected single space before "{" (@stylistic/block-opening-brace-space-before)');
+      expect(warnings[1].text).toBe('Expected single space before "{" (@stylistic/block-opening-brace-space-before)');
     }));
 });

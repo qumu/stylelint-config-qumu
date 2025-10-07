@@ -1,5 +1,6 @@
-const stylelint = require('stylelint');
-const config = require('..');
+import { describe, it, expect } from 'vitest';
+import stylelint from 'stylelint';
+import config from '../index.js';
 
 const invalidCode = `
 .declarationorder {
@@ -9,7 +10,6 @@ const invalidCode = `
   }
 
   color: #f00;
-  
   @include message-box();
   @extend %error;
 }
