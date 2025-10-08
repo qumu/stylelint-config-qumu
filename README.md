@@ -1,21 +1,29 @@
 # Stylelint configuration for Qumu
 
-This configuration needs Stylelint v14+. If you need to use Stylelint 13 and below, please use https://github.com/qumu/code-conventions.
-
 ## Usage
 
-To use our configuration, you first need to install [Sylelint](https://github.com/stylelint/stylelint) and the Enghouse Qumu rules.
+To use our configuration, you first need to install the Enghouse Qumu rules.
 
 ```bash
-npm install --save-dev stylelint @enghouse-qumu/stylelint-config-qumu
+npm i -D @enghouse-qumu/stylelint-config-qumu
 ```
 
-Once installed, create a `.stylelintrc` file and add the following code:
+Once installed, create a `stylelint.config.mjs` file and add the following code:
 
-```json
-{
-  "extends": "@enghouse-qumu/stylelint-config-qumu"
-}
+```javascript
+import config from '@enghouse-qumu/stylelint-config-qumu';
+
+export default {
+  extends: [config],
+};
+```
+
+## Linting your files
+
+You can lint your files by running the following command:
+
+```bash
+npx stylelint "**/*.{css,scss}"
 ```
 
 ## Extending the configuration
@@ -24,14 +32,16 @@ Simply add a `"rules"` key to your config and add your overrides there.
 
 For example, to change the `indentation` to tabs and turn off the `number-leading-zero` rule:
 
-```json
-{
-  "extends": "@enghouse-qumu/stylelint-config-qumu",
-  "rules": {
-    "indentation": "tab",
-    "number-leading-zero": null
-  }
-}
+```javascript
+import config from '@enghouse-qumu/stylelint-config-qumu';
+
+export default {
+  extends: [config],
+  rules: {
+    indentation: 'tab',
+    'number-leading-zero': null,
+  },
+};
 ```
 
 ## Table of Contents
