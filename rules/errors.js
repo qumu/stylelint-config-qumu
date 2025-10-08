@@ -1,5 +1,10 @@
-module.exports = {
+export default {
   rules: {
+    // Disallow extra semicolons.
+    '@stylistic/no-extra-semicolons': true,
+
+    // Specify lowercase or uppercase for pseudo-class selectors.
+    '@stylistic/selector-pseudo-class-case': 'lower',
     // Disallow unknown at-rules.
     // https://stylelint.io/user-guide/rules/at-rule-no-unknown/
     'at-rule-no-unknown': null,
@@ -54,14 +59,7 @@ module.exports = {
 
     // Disallow unknown type selectors.
     // https://stylelint.io/user-guide/rules/selector-type-no-unknown/
-    'selector-type-no-unknown': [
-      true,
-      {
-        'ignoreTypes': [
-          '/^qi-/'
-        ]
-      }
-    ],
+    'selector-type-no-unknown': true,
 
     // Disallow (unescaped) newlines in strings.
     // https://stylelint.io/user-guide/rules/string-no-newline/

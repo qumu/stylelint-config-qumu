@@ -1,8 +1,10 @@
-module.exports = {
+export default {
   rules: {
-    // Allow empty and non-empty lines before @
-    // https://stylelint.io/user-guide/rules/at-rule-empty-line-before/
-    'at-rule-empty-line-before': null,
+    // Specify a disallowed list of at-rules.
+    // https://stylelint.io/user-guide/rules/at-rule-disallowed-list/
+    'at-rule-disallowed-list': [
+      'debug',
+    ],
 
     // Disallow vendor prefixes for at-rules.
     // https://stylelint.io/user-guide/rules/at-rule-no-vendor-prefix/
@@ -16,6 +18,13 @@ module.exports = {
     // https://stylelint.io/user-guide/rules/declaration-block-single-line-max-declarations/
     'declaration-block-single-line-max-declarations': 1,
 
+    // Specify a disallowed list of property and value pairs within declarations.
+    // https://stylelint.io/user-guide/rules/declaration-property-value-disallowed-list/
+    'declaration-property-value-disallowed-list': {
+      '/^border/': [
+        'none',
+      ],
+    },
     // Limit the allowed nesting depth.
     // https://stylelint.io/user-guide/rules/max-nesting-depth/
     'max-nesting-depth': [
@@ -33,14 +42,6 @@ module.exports = {
     // Disallow vendor prefixes for media feature names.
     // https://stylelint.io/user-guide/rules/media-feature-name-no-vendor-prefix/
     'media-feature-name-no-vendor-prefix': null,
-
-    // Disallow the new range feature for @media rules (only supported on iOS 16.4+)
-    // https://stylelint.io/user-guide/rules/media-feature-range-notation/
-    'media-feature-range-notation': null,
-
-    // Disallow CSS specificity check
-    // https://stylelint.io/user-guide/rules/no-descending-specificity/
-    'no-descending-specificity': null,
 
     // Disallow vendor prefixes for properties.
     // https://stylelint.io/user-guide/rules/property-no-vendor-prefix/
