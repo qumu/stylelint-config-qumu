@@ -1,4 +1,8 @@
-name: Publish to NPM
+name: "Generate release & new package to NPM"
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 on:
   push:
@@ -7,16 +11,16 @@ on:
 
 jobs:
   create-release:
-    name: Create Release
+    name: Create new release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
       - name: Create Release
-        uses: actions/github-script@v6.1.0
+        uses: actions/github-script@v8
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -29,13 +33,13 @@ jobs:
     name: Release package to NPM
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: 'npm'
@@ -50,5 +54,3 @@ jobs:
         run: |
           npm config set access public
           npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
